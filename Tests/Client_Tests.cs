@@ -7,9 +7,9 @@ using HairSalon;
 
 namespace Tests
 {
-  public class Stylist_Tests : IDisposable
+  public class Client_Test : IDisposable
   {
-    public Stylist_Tests()
+    public Client_Test()
     {
       string dataSource = "Data Source=(localdb)\\mssqllocaldb"; // Data Source identifies the server.
       string databaseName = "hair_salon_test"; // Initial Catalog is the database name
@@ -17,13 +17,14 @@ namespace Tests
       DBConfiguration.ConnectionString = ""+dataSource+";Initial Catalog="+databaseName+";Integrated Security=SSPI;";
     }
     [Fact]
-    public void Stylist_DoConstructorAndGettersWork()
+    public void Client_DoConstructorAndGettersWork()
     {
       //Act
-      Stylist newStyle = new Stylist ("Sara");
+      Client newClient = new Client ("Sara", 1);
       //Arrange
-      Assert.Equal( "Sara", newStyle.GetName() );
-      Assert.Equal( 0, newStyle.GetId() );
+      Assert.Equal( "Sara", newClient.GetName() );
+      Assert.Equal( 0, newClient.GetId() );
+      Assert.Equal( 1, newClient.GetStylist() );
     }
     // [Fact]
     // public void GetAll_ReturnsAllRowFromPage()
@@ -83,9 +84,9 @@ namespace Tests
     //   //Assert
     //   Assert.Equal(1, Stylist.GetAll().Count );
     // }
-    // public void Dispose()
-    // {
+    public void Dispose()
+    {
     //   Stylist.DeleteAll();
-    // }
+    }
   }
 }

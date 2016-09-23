@@ -6,15 +6,17 @@ using System.Data.SqlClient;
 
 namespace HairSalon
 {
-  public class Stylist
+  public class Client
   {
     private int _id;
     private string _name;
+    private int _stylist;
 
-    public Stylist(string name, int id = 0)
+    public Client(string name, int stylist, int id = 0)
     {
       _name = name;
       _id = id;
+      _stylist = stylist;
     }
     public int GetId()
     {
@@ -23,6 +25,10 @@ namespace HairSalon
     public string GetName()
     {
       return _name;
+    }
+    public int GetStylist()
+    {
+      return _stylist;
     }
   //   public static List<Stylist> GetAll()
   //   {
