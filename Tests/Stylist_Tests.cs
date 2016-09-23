@@ -83,6 +83,25 @@ namespace Tests
       //Assert
       Assert.Equal(1, Stylist.GetAll().Count );
     }
+    public void FindClients()
+    {
+      //Arrange
+      Stylist stylist = new Stylist ("Sara's Sister");
+      stylist.Save();
+      Stylist stylist2 = new Stylist ("Mrs. Nordy");
+      stylist2.Save();
+      Client client = new Client ("Dan", 1);
+      client.Save();
+      Client client1 = new Client ("George", 1);
+      client1.Save();
+      Client client2 = new Client ("Coolio", 2);
+      client2.Save();
+      List<Client> created = new List<Client> {client, client1};
+      //Act
+      List<Client> saved = stylist2.FindClients();
+      //Assert
+      Assert.Equal(created, saved);
+    }
     public void Dispose()
     {
       Stylist.DeleteAll();

@@ -179,8 +179,7 @@ namespace HairSalon
       {
         conn.Close();
       }
-
-    }
+    }    
     //Overrides
    public override bool Equals(System.Object client)
    {
