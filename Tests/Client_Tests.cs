@@ -75,18 +75,18 @@ namespace Tests
       Assert.Equal( steve, client.GetName() );
       Assert.Equal( steve_stylist, client.GetStylist() );
     }
-    // public void Delete_WillDeleteARow()
-    // {
-    //   //Arrange
-    //   Stylist stylist = new Stylist ("Dan");
-    //   stylist.Save();
-    //   Stylist stylist2 = new Stylist ("Julie");
-    //   stylist2.Save();
-    //   // Act
-    //   stylist.Delete(); // Dan was fired.
-    //   //Assert
-    //   Assert.Equal(1, Stylist.GetAll().Count );
-    // }
+    public void Delete_WillDeleteARow()
+    {
+      //Arrange
+      Client client = new Client ("Dan", 2);
+      client.Save();
+      Client client2 = new Client ("Julie" , 3);
+      client2.Save();
+      // Act
+      client.Delete(); // Dan was fired.
+      //Assert
+      Assert.Equal(1, Client.GetAll().Count );
+    }
     public void Dispose()
     {
       Client.DeleteAll();

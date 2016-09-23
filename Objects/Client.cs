@@ -164,23 +164,23 @@ namespace HairSalon
         conn.Close();
       }
     }
-  //   public void Delete()
-  //   {
-  //     SqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     string query="DELETE FROM stylists WHERE id = @id;";
-  //     SqlCommand cmd = new SqlCommand (query, conn);
-  //     SqlParameter idParameter = new SqlParameter("id", this._id );
-  //     cmd.Parameters.Add(idParameter);
-  //     SqlDataReader rdr = cmd.ExecuteReader();
-   //
-  //     if (conn != null)
-  //     {
-  //       conn.Close();
-  //     }
-   //
-  //   }
+    public void Delete()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string query="DELETE FROM Clients WHERE id = @id;";
+      SqlCommand cmd = new SqlCommand (query, conn);
+      SqlParameter idParameter = new SqlParameter("id", this._id );
+      cmd.Parameters.Add(idParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+   
+    }
     //Overrides
    public override bool Equals(System.Object client)
    {
