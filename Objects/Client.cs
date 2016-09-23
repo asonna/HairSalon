@@ -9,6 +9,5 @@ namespace HairSalon
   public class Client
   {
 
-
   }
 }

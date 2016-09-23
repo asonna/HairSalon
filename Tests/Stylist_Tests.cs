@@ -16,8 +16,13 @@ namespace Tests
       //Integrated Security sets the security of the database access to the Windows user that is currently logged in.
       DBConfiguration.ConnectionString = ""+dataSource+";Initial Catalog="+databaseName+";Integrated Security=SSPI;";
     }
-
-
+    [Fact]
+    public void Stylist_DoConstructorAndGettersWork_1()
+    {
+      Stylist newStyle = new Stylist ("Sara");
+      Assert.Equal( "Sara", newStyle.GetName() );
+      Assert.Equal( 0, newStyle.GetId() );
+    }
     public void Dispose()
     {
       // Item.DeleteAll();

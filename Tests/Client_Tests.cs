@@ -12,7 +12,7 @@ namespace Tests
     public Client_Tests()
     {
       string dataSource = "Data Source=(localdb)\\mssqllocaldb"; // Data Source identifies the server.
-      string databaseName = "database"; // Initial Catalog is the database name
+      string databaseName = "hair_salon_test"; // Initial Catalog is the database name
       //Integrated Security sets the security of the database access to the Windows user that is currently logged in.
       DBConfiguration.ConnectionString = ""+dataSource+";Initial Catalog="+databaseName+";Integrated Security=SSPI;";
     }
