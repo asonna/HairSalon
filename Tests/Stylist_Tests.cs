@@ -45,6 +45,19 @@ namespace Tests
       List<Stylist> created = new List<Stylist> {newStylist};
       Assert.Equal(saved, created);
     }
+    [Fact]
+    public void Find_CandFindAndReturnARow()
+    {
+      //Arrange
+      Stylist stylist = new Stylist ("Susan");
+      stylist.Save();
+      Stylist stylist2 = new Stylist ("Dan");
+      stylist2.Save();
+      // Act
+      Stylist foundStylist  = Stylist.Find( stylist.GetId() );
+      //Assert
+      Assert.Equal(stylist,foundStylist);
+    }
     public void Dispose()
     {
       Stylist.DeleteAll();
