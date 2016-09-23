@@ -26,14 +26,14 @@ namespace Tests
       Assert.Equal( 0, newClient.GetId() );
       Assert.Equal( 1, newClient.GetStylist() );
     }
-    // [Fact]
-    // public void GetAll_ReturnsAllRowFromPage()
-    // {
-    //   //Act
-    //   int rows = Stylist.GetAll().Count;
-    //   //Arrange
-    //   Assert.Equal(0,rows);
-    // }
+    [Fact]
+    public void GetAll_ReturnsAllRowFromPage()
+    {
+      //Act
+      int rows = Stylist.GetAll().Count;
+      //Arrange
+      Assert.Equal(0,rows);
+    }
     // [Fact]
     // public void Save_SaveInstanceToDatabase()
     // {

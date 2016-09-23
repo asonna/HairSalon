@@ -30,36 +30,38 @@ namespace HairSalon
     {
       return _stylist;
     }
-  //   public static List<Stylist> GetAll()
-  //   {
-  //     List<Stylist> listStylists = new List<Stylist> {};
-   //
-  //     SqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     string query = "SELECT * from stylists;";
-  //     SqlCommand cmd = new SqlCommand(query,conn);
-  //     SqlDataReader rdr = cmd.ExecuteReader();
-   //
-  //     int id = 0;
-  //     string name = null;
-  //     while ( rdr.Read() )
-  //     {
-  //       id = rdr.GetInt32(0);
-  //       name = rdr.GetString(1);
-  //       Stylist stylist = new Stylist(name, id);
-  //       listStylists.Add(stylist);
-  //     }
-  //     if (rdr != null)
-  //     {
-  //       rdr.Close();
-  //     }
-  //     if (conn != null)
-  //     {
-  //       conn.Close();
-  //     }
-  //     return listStylists;
-  //   }
+    public static List<Client> GetAll()
+    {
+      List<Client> listClients = new List<Client> {};
+
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string query = "SELECT * from clients;";
+      SqlCommand cmd = new SqlCommand(query,conn);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int id = 0;
+      string name = null;
+      int stylist = 0;
+      while ( rdr.Read() )
+      {
+        id = rdr.GetInt32(0);
+        name = rdr.GetString(1);
+        stylist = rdr.GetInt32(2);
+        Client client = new Client(name, stylist, id);
+        listClients.Add(client);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return listClients;
+    }
   //   public static void DeleteAll()
   //   {
   //     SqlConnection conn = DB.Connection();
