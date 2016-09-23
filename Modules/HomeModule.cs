@@ -13,6 +13,9 @@ namespace HairSalon
         List<Stylist> stylists = Stylist.GetAll();
         return View["index.cshtml", stylists];
       };
+      ///////////////////////////////////////////////////
+      ////RESTFUL ROOTS FOR Stylist                  ////
+      //////////////////////////////////////////////////
       Post["/add_stylist"] = _ => {
         Stylist newStylist = new Stylist (Request.Form["stylist"]);
         newStylist.Save();
@@ -28,25 +31,30 @@ namespace HairSalon
         List<Stylist> stylists = Stylist.GetAll();
         return View["index.cshtml", stylists];
       };
-      Get["/edit_stylist/{id}"] = parameters =>
+      Get["/edit/{id}"] = parameters =>
       {
         Stylist editStylist = Stylist.Find(parameters.id);
         return View["change_and_delete_stylist.cshtml", editStylist];
       };
-      Patch["/update_stylist/{id}"] = parameters => {
+      Patch["/edit/{id}"] = parameters => {
         Stylist updateStylist = Stylist.Find(parameters.id);
         updateStylist.Update(Request.Form["new_stylist_name"]);
-        return View["index.cshtml"];
+
+        List<Stylist> stylists = Stylist.GetAll();
+        return View["success.cshtml", stylists];
       };
-      Get["/delete_stylist/{id}"] = parameters =>
+      Delete["/edit/{id}"] = parameters =>
       {
         Stylist removedStylist = Stylist.Find(parameters.id);
         removedStylist.Delete();
 
         List<Stylist> stylists = Stylist.GetAll();
-        return View["index.cshtml", stylists];
+        return View["success.cshtml", stylists];
       };
-      Get["/stylist/{id}"] = parameters =>
+      ////////////////////////////////////////////////////////////
+      /////  RESTFUL ROUTS FOR CLIENTS                  //////////
+      ///////////////////////////////////////////////////////////
+      Get["/clients/{id}"] = parameters =>
       {
         Stylist currentStylist = Stylist.Find(parameters.id);
         List<Client> clients = currentStylist.FindClients();

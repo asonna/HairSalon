@@ -14,14 +14,18 @@
   <body>
     <h1>@Model.GetName()</h1>
 
-    <form class="form-inline" action="/update_stylist/@Model.GetId()" method="post">
+    <form class="form-inline" action="/edit/@Model.GetId()" method="post">
       <input type="hidden" name="_method" value="PATCH">
       <input name="stylist_id" type="hidden" value="@Model.GetId()">
       <div class="form-group">
         <input type="text" class="form-control" name="new_stylist_name" placeholder="Change Name">
       </div>
       <button class="btn btn-info" type="submit">Submit</button>
-
+    </form>
+    <form class="form-inline" action="/edit/@Model.GetId()" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input name="stylist_id" type="hidden" value="@Model.GetId()">
+      <button class="btn btn-info" type="submit">Delete Stylist</button>
     </form>
   </body>
 </html>

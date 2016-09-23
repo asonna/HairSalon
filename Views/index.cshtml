@@ -15,7 +15,7 @@
     <h1>Current Stylists</h1>
     @foreach (var stylist in @Model)
     {
-    <h4><a href="stylist/@stylist.GetId()">@stylist.GetName()</a> <small><a href="/edit_stylist/@stylist.GetId()">edit</a></small></h4>
+    <h4><a href="/clients/@stylist.GetId()">@stylist.GetName()</a> <small><a href="/edit/@stylist.GetId()">edit</a></small></h4>
     }
     <h1>Add Stylist</h1>
     <form class="form-inline" action="/add_stylist" method="post">
