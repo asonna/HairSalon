@@ -179,7 +179,7 @@ namespace HairSalon
       {
         conn.Close();
       }
-   
+
     }
     //Overrides
    public override bool Equals(System.Object client)
@@ -192,14 +192,8 @@ namespace HairSalon
      {
        Client newClient = (Client) client;
        bool nameEquality = ( newClient.GetName() == this.GetName() );
-       Console.WriteLine(newClient.GetName());
-       Console.WriteLine(this.GetName() );
        bool idEquality = ( newClient.GetId() == this.GetId() );
-       Console.WriteLine(newClient.GetId() );
-       Console.WriteLine(this.GetId() );
        bool stylistEquality = ( newClient.GetStylist() == this.GetStylist() );
-       Console.WriteLine(newClient.GetStylist() );
-       Console.WriteLine(this.GetStylist() );
        return ( idEquality && nameEquality && stylistEquality);
      }
    }
