@@ -34,18 +34,18 @@ namespace Tests
       //Arrange
       Assert.Equal(0,rows);
     }
-    // [Fact]
-    // public void Save_SaveInstanceToDatabase()
-    // {
-    //   //Arrange
-    //   Stylist newStylist = new Stylist ("Jenny");
-    //   //Act
-    //   newStylist.Save();
-    //   //Assert
-    //   List<Stylist> saved = Stylist.GetAll();
-    //   List<Stylist> created = new List<Stylist> {newStylist};
-    //   Assert.Equal(saved, created);
-    // }
+    [Fact]
+    public void Save_SaveInstanceToDatabase()
+    {
+      //Arrange
+      Client newClient = new Client ("Jerry", 1);
+      //Act
+      newClient.Save();
+      //Assert
+      List<Client> saved = Client.GetAll();
+      List<Client> created = new List<Client> {newClient};
+      Assert.Equal(created,saved);
+    }
     // [Fact]
     // public void Find_CandFindAndReturnARow()
     // {
@@ -86,7 +86,7 @@ namespace Tests
     // }
     public void Dispose()
     {
-    //   Stylist.DeleteAll();
+      Client.DeleteAll();
     }
   }
 }

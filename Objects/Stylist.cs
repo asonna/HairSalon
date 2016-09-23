@@ -75,7 +75,7 @@ namespace HairSalon
 
       string query = "INSERT INTO stylists (description) OUTPUT INSERTED.id VALUES (@name);";
       SqlCommand cmd = new SqlCommand (query, conn);
-      SqlParameter nameParameter = new SqlParameter("name", this.GetName() );
+      SqlParameter nameParameter = new SqlParameter("@name", this.GetName() );
       cmd.Parameters.Add(nameParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -99,7 +99,7 @@ namespace HairSalon
 
       string query="SELECT * FROM stylists WHERE id = @id;";
       SqlCommand cmd = new SqlCommand (query, conn);
-      SqlParameter idParameter = new SqlParameter("id", id );
+      SqlParameter idParameter = new SqlParameter("@id", id );
       cmd.Parameters.Add(idParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -156,7 +156,7 @@ namespace HairSalon
 
       string query="DELETE FROM stylists WHERE id = @id;";
       SqlCommand cmd = new SqlCommand (query, conn);
-      SqlParameter idParameter = new SqlParameter("id", this._id );
+      SqlParameter idParameter = new SqlParameter("@id", this._id );
       cmd.Parameters.Add(idParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
 

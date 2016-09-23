@@ -62,44 +62,47 @@ namespace HairSalon
       }
       return listClients;
     }
-  //   public static void DeleteAll()
-  //   {
-  //     SqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     string nonQuery = "DELETE FROM stylists;";
-  //     SqlCommand cmd = new SqlCommand(nonQuery,conn);
-  //     cmd.ExecuteNonQuery();
-   //
-  //     if (conn != null)
-  //     {
-  //       conn.Close();
-  //     }
-  //   }
-  //   public void Save()
-  //   {
-  //     SqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     string query = "INSERT INTO stylists (description) OUTPUT INSERTED.id VALUES (@name);";
-  //     SqlCommand cmd = new SqlCommand (query, conn);
-  //     SqlParameter nameParameter = new SqlParameter("name", this.GetName() );
-  //     cmd.Parameters.Add(nameParameter);
-  //     SqlDataReader rdr = cmd.ExecuteReader();
-   //
-  //     while ( rdr.Read() )
-  //     {
-  //       _id = rdr.GetInt32(0);
-  //     }
-  //     if (rdr != null)
-  //     {
-  //       rdr.Close();
-  //     }
-  //     if (conn != null)
-  //     {
-  //       conn.Close();
-  //     }
-  //   }
+    public static void DeleteAll()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string nonQuery = "DELETE FROM clients;";
+      SqlCommand cmd = new SqlCommand(nonQuery,conn);
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+    public void Save()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string query = "INSERT INTO clients (description, stylist) OUTPUT INSERTED.id VALUES (@name, @stylist);";
+      SqlCommand cmd = new SqlCommand (query, conn);
+      cmd.Parameters.AddRange( new []
+      {
+        new SqlParameter( "@name", this._name ),
+        new SqlParameter( "@stylist", this.GetStylist() )
+      });
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while ( rdr.Read() )
+      {
+        _id = rdr.GetInt32(0);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
   //   public static Stylist Find(int id)
   //   {
   //     SqlConnection conn = DB.Connection();
@@ -174,25 +177,31 @@ namespace HairSalon
   //     }
    //
   //   }
-  //   //Overrides
-  //  public override bool Equals(System.Object stylist)
-  //  {
-  //    if (!(stylist is Stylist))
-  //    {
-  //      return false;
-  //    }
-  //    else
-  //    {
-  //      Stylist newStylist = (Stylist) stylist;
-  //      bool nameEquality = ( newStylist.GetName() == this.GetName() );
-  //      bool idEquality = ( newStylist.GetId() == this.GetId() );
-  //      return ( idEquality && nameEquality);
-  //    }
-  //  }
-  //  public override int GetHashCode()
-  //  {
-  //    return this.GetName().GetHashCode();
-  //  }
-
+    //Overrides
+   public override bool Equals(System.Object client)
+   {
+     if (!(client is Client))
+     {
+       return false;
+     }
+     else
+     {
+       Client newClient = (Client) client;
+       bool nameEquality = ( newClient.GetName() == this.GetName() );
+       Console.WriteLine(newClient.GetName());
+       Console.WriteLine(this.GetName() );
+       bool idEquality = ( newClient.GetId() == this.GetId() );
+       Console.WriteLine(newClient.GetId() );
+       Console.WriteLine(this.GetId() );
+       bool stylistEquality = ( newClient.GetStylist() == this.GetStylist() );
+       Console.WriteLine(newClient.GetStylist() );
+       Console.WriteLine(this.GetStylist() );
+       return ( idEquality && nameEquality && stylistEquality);
+     }
+   }
+   public override int GetHashCode()
+   {
+     return this.GetName().GetHashCode();
+   }
   }
 }
