@@ -47,9 +47,7 @@ namespace HairSalon
       {
         Stylist removedStylist = Stylist.Find(parameters.id);
         removedStylist.Delete();
-
-        List<Stylist> stylists = Stylist.GetAll();
-        return View["success.cshtml", stylists];
+        return View["success.cshtml"];
       };
       ////////////////////////////////////////////////////////////
       /////  RESTFUL ROUTS FOR CLIENTS                  //////////
@@ -62,9 +60,10 @@ namespace HairSalon
         Dictionary<string,object> model = new Dictionary<string,object> {};
         model.Add("stylist", currentStylist);
         model.Add("clients", clients);
-        return View["client_list_by_stylist", model];
+        return View["client_list_by_stylist.cshtml", model];
       };
-      Post["/add_client"] = _ => {
+      Post["/clients/add_client"] = _ =>
+      {
         Client newClient = new Client (Request.Form["new_client"],Request.Form["stylist_id"]);
         newClient.Save();
 
@@ -74,8 +73,25 @@ namespace HairSalon
         Dictionary<string,object> model = new Dictionary<string,object> {};
         model.Add("stylist", currentStylist);
         model.Add("clients", clients);
-        return View["client_list_by_stylist", model];
+        return View["client_list_by_stylist.cshtml", model];
       };
+      Get["/clients/edit/{id}"] = parameters =>
+      {
+        Client client = Client.Find(parameters.id);
+        return View["change_and_delete_client.cshtml", client];
+      };
+      Delete["/clients/edit/{id}"] = parameters =>
+      {
+        Client client = Client.Find(parameters.id);
+        client.Delete();
+        return View["success.cshtml"];
+      };
+
+
+
+
+
+
     }
   }
 }
