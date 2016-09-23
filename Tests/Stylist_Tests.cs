@@ -71,6 +71,18 @@ namespace Tests
       //Assert
       Assert.Equal( steve, stylist.GetName() );
     }
+    public void Delete_WillDeleteARow()
+    {
+      //Arrange
+      Stylist stylist = new Stylist ("Dan");
+      stylist.Save();
+      Stylist stylist2 = new Stylist ("Julie");
+      stylist2.Save();
+      // Act
+      stylist.Delete(); // Dan was fired.
+      //Assert
+      Assert.Equal(1, Stylist.GetAll().Count );
+    }
     public void Dispose()
     {
       Stylist.DeleteAll();
