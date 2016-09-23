@@ -21,9 +21,10 @@
     <form class="form-inline" action="/add_client" method="post">
       <div class="form-group">
         <input type="text" class="form-control" name="new_client" placeholder="Add a new stylist">
-        <input type="hidden" name="stylist_id" value="@client.GetId()">
+        <input type="hidden" name="stylist_id" value='@Model["stylist"].GetId()'>
       </div>
       <button class="btn btn-info" type="submit">Submit</button>
+      <input type="button" class="btn btn-info" onclick="location.href='/';" value="Back" />
     </form>
   </body>
 </html>
