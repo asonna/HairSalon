@@ -19,10 +19,20 @@ namespace Tests
     [Fact]
     public void Stylist_DoConstructorAndGettersWork_1()
     {
+      //Act
       Stylist newStyle = new Stylist ("Sara");
+      //Arrange
       Assert.Equal( "Sara", newStyle.GetName() );
       Assert.Equal( 0, newStyle.GetId() );
     }
+    public void GetAll_GetAllReturnsAllRowFromTage_2()
+    {
+      //Act
+      int rows = Stylist.GetAll().Count;
+      //Arrange
+      Assert.Equal(0,rows);
+    }
+
     public void Dispose()
     {
       // Item.DeleteAll();
