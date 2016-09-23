@@ -12,19 +12,47 @@
   </head>
 
   <body>
-    <h1>@Model["stylist"].GetName()</h1>
-    @foreach (var client in @Model["clients"])
-    {
-    <h4>@client.GetName()<small> <a href="/clients/edit/@client.GetId()">edit</a></small></h4>
-    }
-    <h1>Add Client</h1>
-    <form class="form-inline" action="/clients/add_client" method="post">
-      <div class="form-group">
-        <input type="text" class="form-control" name="new_client" placeholder="Add a new stylist">
-        <input type="hidden" name="stylist_id" value='@Model["stylist"].GetId()'>
+    <section class="module parallax parallax-1">
+      <div class="container">
+        <h1 id="brand">Seattle Hair</h1>
       </div>
-      <button class="btn btn-info" type="submit">Submit</button>
-      <input type="button" class="btn btn-info" onclick="location.href='/';" value="Back" />
-    </form>
+    </section>
+    <section class="module content">
+      <div class="container section-container">
+        <div class="city-output">
+          <h1>@Model["stylist"].GetName()'s current clients</h1>
+          <p>
+            @foreach (var client in @Model["clients"])
+            {
+            <h4>@client.GetName()<small> <a href="/clients/edit/@client.GetId()">edit</a></small></h4>
+            }
+          </p>
+        </div>
+        <input type="button" class="btn btn-default spaceSmall" onclick="location.href='/';" value="Back" />
+        <div class="spaceSmall"></div>
+      </div>
+    </section>
+    <section class="module parallax parallax-1">
+      <div class="container">
+        <h1 id="brand"></h1>
+      </div>
+    </section>
+    <section class="module content ">
+      <div class="container section-container">
+        <div class="city-output cuisine">
+          <h1>Add Client</h1>
+          <form class="form-inline" action="/clients/add_client" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" name="new_client" placeholder="Add a new stylist">
+              <input type="hidden" name="stylist_id" value='@Model["stylist"].GetId()'>
+            </div>
+            <button class="btn btn-default" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="well well-lg">
+      <p class="text-center">&copy;Jonathan Buchner</p>
+    </div>
   </body>
 </html>

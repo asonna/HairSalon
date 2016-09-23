@@ -1,0 +1,40 @@
+section.module.parallax {
+  height: 400px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+section.module.parallax h1 {
+  font-family: 'Permanent Marker', cursive;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 70px;
+  line-height: 400px;
+  font-weight: 700;
+  text-align: right;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+section.module.parallax-1 {
+  background-image: url("http://rewealthpros.com/wp-content/uploads/2014/04/seattle-skyline-dawn.jpg");
+}
+
+a {
+  color: rgba(40, 40, 40, 0.8);
+}
+a:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+.spaceMed {
+  margin-top: 30px;
+}
+.spaceSmall {
+  margin-top: 15px;
+}
+
+.well {
+  margin-top: 150px;
+}

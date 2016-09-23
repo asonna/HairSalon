@@ -12,18 +12,45 @@
   </head>
 
   <body>
-    <h1>Current Stylists</h1>
-    @foreach (var stylist in @Model)
-    {
-    <h4><a href="/clients/@stylist.GetId()">@stylist.GetName()</a> <small><a href="/edit/@stylist.GetId()">edit</a></small></h4>
-    }
-    <h1>Add Stylist</h1>
-    <form class="form-inline" action="/add_stylist" method="post">
-      <div class="form-group">
-        <input type="text" class="form-control" name="stylist" placeholder="Add a new stylist">
+    <section class="module parallax parallax-1">
+      <div class="container">
+        <h1 id="brand">Seattle Hair</h1>
       </div>
-      <button class="btn btn-info" type="submit">Submit</button>
-      <input type="button" class="btn btn-info" onclick="location.href='/delete_all_stylists_and_clients';" value="Delete All Stylist and Clients" />
-    </form>
+    </section>
+    <section class="module content">
+      <div class="container section-container">
+        <div class="city-output">
+          <h1>Our Stylists</h1>
+          <p>
+          @foreach (var stylist in @Model)
+          {
+          <h4><a href="/clients/@stylist.GetId()">@stylist.GetName()</a> <small><a href="/edit/@stylist.GetId()">edit</a></small></h4>
+          }
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="module parallax parallax-1">
+      <div class="container">
+        <h1 id="brand"></h1>
+      </div>
+    </section>
+    <section class="module content ">
+      <div class="container section-container">
+        <div class="city-output cuisine">
+          <h1>Add Stylist</h1>
+          <form class="form-inline" action="/add_stylist" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" name="stylist" placeholder="Add a new stylist">
+            </div>
+            <button class="btn btn-default" type="submit">Submit</button>
+          </form>
+          <input type="button" class="btn btn-default spaceMed" onclick="location.href='/delete_all_stylists_and_clients';" value="Delete All Stylist and Clients" />
+        </div>
+      </div>
+    </section>
+    <div class="well well-lg">
+      <p class="text-center">&copy;Jonathan Buchner</p>
+    </div>
   </body>
 </html>

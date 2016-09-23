@@ -12,21 +12,31 @@
   </head>
 
   <body>
-    <h1>@Model.GetName()</h1>
-
-    <form class="form-inline" action="/edit/@Model.GetId()" method="post">
-      <input type="hidden" name="_method" value="PATCH">
-      <input name="stylist_id" type="hidden" value="@Model.GetId()">
-      <div class="form-group">
-        <input type="text" class="form-control" name="new_stylist_name" placeholder="Change Name">
+    <section class="module parallax parallax-1">
+      <div class="container">
+        <h1 id="brand">Seattle Hair</h1>
       </div>
-      <button class="btn btn-info" type="submit">Submit</button>
-    </form>
-    <form class="form-inline" action="/edit/@Model.GetId()" method="post">
-      <input type="hidden" name="_method" value="DELETE">
-      <input name="stylist_id" type="hidden" value="@Model.GetId()">
-      <button class="btn btn-info" type="submit">Delete Stylist</button>
-    </form>
-    <input type="button" class="btn btn-info" onclick="location.href='/';" value="Back" />
+    </section>
+    <section class="module content">
+      <div class="container section-container">
+        <div class="city-output">
+          <h1>Edit @Model.GetName()</h1>
+          <form class="form-inline" action="/edit/@Model.GetId()" method="post">
+            <input type="hidden" name="_method" value="PATCH">
+            <input name="stylist_id" type="hidden" value="@Model.GetId()">
+            <div class="form-group">
+              <input type="text" class="form-control" name="new_stylist_name" placeholder="Change Name">
+            </div>
+            <button class="btn btn-default" type="submit">Submit</button>
+          </form>
+          <form class="form-inline" action="/edit/@Model.GetId()" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input name="stylist_id" type="hidden" value="@Model.GetId()">
+            <button class="btn btn-default spaceMed" type="submit">Delete Stylist</button>
+          </form>
+          <input type="button" class="btn btn-default spaceSmall" onclick="location.href='/';" value="Back" />
+        </div>
+      </div>
+    </section>
   </body>
 </html>
