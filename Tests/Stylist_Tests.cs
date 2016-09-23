@@ -25,6 +25,7 @@ namespace Tests
       Assert.Equal( "Sara", newStyle.GetName() );
       Assert.Equal( 0, newStyle.GetId() );
     }
+    [Fact]
     public void GetAll_GetAllReturnsAllRowFromTage_2()
     {
       //Act
@@ -32,7 +33,18 @@ namespace Tests
       //Arrange
       Assert.Equal(0,rows);
     }
-
+    [Fact]
+    public void Save_DoesSaveToDatabase()
+    {
+      //Arrange
+      Stylist newStylist = new Stylist ("Jenny");
+      //Act
+      newStylist.Save();
+      //Assert
+      List<Stylist> saved = Stylist.GetAll();
+      List<Stylist> created = new List<Stylist> {newStylist};
+      Assert.Equal(saved, created);
+    }
     public void Dispose()
     {
       // Item.DeleteAll();
