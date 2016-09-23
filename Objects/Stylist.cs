@@ -122,7 +122,33 @@ namespace HairSalon
       }
       return stylist;
     }
+    public void Update(string name)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+      string query = "UPDATE stylists SET description=@name OUTPUT INSERTED.description WHERE id = @id;";
+      SqlCommand cmd = new SqlCommand(query,conn);
+      cmd.Parameters.AddRange( new []
+      {
+        new SqlParameter( "@name", name ),
+        new SqlParameter( "@id", this.GetId() )
+      });
+      SqlDataReader rdr = cmd.ExecuteReader();
+      while ( rdr.Read() )
+      {
+        this._name = rdr.GetString(0);
+      }
+      Console.WriteLine(this._id);
 
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
     //Overrides
    public override bool Equals(System.Object stylist)
    {

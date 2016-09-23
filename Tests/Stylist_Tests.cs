@@ -17,7 +17,7 @@ namespace Tests
       DBConfiguration.ConnectionString = ""+dataSource+";Initial Catalog="+databaseName+";Integrated Security=SSPI;";
     }
     [Fact]
-    public void Stylist_DoConstructorAndGettersWork_1()
+    public void Stylist_DoConstructorAndGettersWork()
     {
       //Act
       Stylist newStyle = new Stylist ("Sara");
@@ -26,7 +26,7 @@ namespace Tests
       Assert.Equal( 0, newStyle.GetId() );
     }
     [Fact]
-    public void GetAll_GetAllReturnsAllRowFromTage_2()
+    public void GetAll_ReturnsAllRowFromPage()
     {
       //Act
       int rows = Stylist.GetAll().Count;
@@ -34,7 +34,7 @@ namespace Tests
       Assert.Equal(0,rows);
     }
     [Fact]
-    public void Save_DoesSaveToDatabase()
+    public void Save_SaveInstanceToDatabase()
     {
       //Arrange
       Stylist newStylist = new Stylist ("Jenny");
@@ -57,6 +57,19 @@ namespace Tests
       Stylist foundStylist  = Stylist.Find( stylist.GetId() );
       //Assert
       Assert.Equal(stylist,foundStylist);
+    }
+    [Fact]
+    public void Update_WillUpdateARowWithANewName()
+    {
+      //Arrange
+      string anne = "Anne";
+      string steve = "Steve";
+      Stylist stylist = new Stylist(anne);
+      stylist.Save();
+      //Act
+      stylist.Update(steve);
+      //Assert
+      Assert.Equal( steve, stylist.GetName() );
     }
     public void Dispose()
     {
