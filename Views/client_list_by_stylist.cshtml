@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Pick a styalist</title>
+    <title>Clients</title>
     <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css" >
     <link rel="stylesheet" href="../Content/css/styles.css" >
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -12,18 +12,18 @@
   </head>
 
   <body>
-    <h1>Current Stylists</h1>
-    @foreach (var stylist in @Model)
+    <h1>@Model["stylist"].GetName()</h1>
+    @foreach (var client in @Model["clients"])
     {
-    <h4><a href="stylist/@stylist.GetId()">@stylist.GetName()</a></h4>
+    <h4><a href="stylist/@client.GetId()">@client.GetName()</a></h4>
     }
-    <h1>Add Stylist</h1>
-    <form class="form-inline" action="/add_stylist" method="post">
+    <h1>Add Client</h1>
+    <form class="form-inline" action="/add_client" method="post">
       <div class="form-group">
-        <input type="text" class="form-control" name="stylist" placeholder="Add a new stylist">
+        <input type="text" class="form-control" name="new_client" placeholder="Add a new stylist">
+        <input type="hidden" name="stylist_id" value="@client.GetId()">
       </div>
       <button class="btn btn-info" type="submit">Submit</button>
-      <input type="button" class="btn btn-info" onclick="location.href='/delete_all_stylists_and_clients';" value="Delete All Stylist and Clients" />
     </form>
   </body>
 </html>
