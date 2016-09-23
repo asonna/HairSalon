@@ -47,7 +47,7 @@ namespace Tests
     }
     public void Dispose()
     {
-      // Item.DeleteAll();
+      Stylist.DeleteAll();
     }
   }
 }

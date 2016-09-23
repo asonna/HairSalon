@@ -54,6 +54,20 @@ namespace HairSalon
       }
       return listStylists;
     }
+    public static void DeleteAll()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string nonQuery = "DELETE FROM stylists;";
+      SqlCommand cmd = new SqlCommand(nonQuery,conn);
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
     public void Save()
     {
       SqlConnection conn = DB.Connection();
