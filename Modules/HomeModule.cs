@@ -89,12 +89,6 @@ namespace HairSalon
         client.Delete();
         return View["success.cshtml"];
       };
-
-
-
-
-
-
     }
   }
 }
