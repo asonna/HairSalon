@@ -46,32 +46,35 @@ namespace Tests
       List<Client> created = new List<Client> {newClient};
       Assert.Equal(created,saved);
     }
-    // [Fact]
-    // public void Find_CandFindAndReturnARow()
-    // {
-    //   //Arrange
-    //   Stylist stylist = new Stylist ("Susan");
-    //   stylist.Save();
-    //   Stylist stylist2 = new Stylist ("Dan");
-    //   stylist2.Save();
-    //   // Act
-    //   Stylist foundStylist  = Stylist.Find( stylist.GetId() );
-    //   //Assert
-    //   Assert.Equal(stylist,foundStylist);
-    // }
-    // [Fact]
-    // public void Update_WillUpdateARowWithANewName()
-    // {
-    //   //Arrange
-    //   string anne = "Anne";
-    //   string steve = "Steve";
-    //   Stylist stylist = new Stylist(anne);
-    //   stylist.Save();
-    //   //Act
-    //   stylist.Update(steve);
-    //   //Assert
-    //   Assert.Equal( steve, stylist.GetName() );
-    // }
+    [Fact]
+    public void Find_CandFindAndReturnARow()
+    {
+      //Arrange
+      Client client = new Client("Bill", 1);
+      client.Save();
+      Client client2 = new Client("George", 2);
+      client2.Save();
+      // Act
+      Client foundClient = Client.Find( client.GetId() );
+      //Assert
+      Assert.Equal(client, foundClient);
+    }
+    [Fact]
+    public void Update_WillUpdateARowWithANewName()
+    {
+      //Arrange
+      string anne = "Anne";
+      int anne_stylist = 1;
+      string steve = "Steve";
+      int steve_stylist = 2;
+      Client client = new Client(anne, anne_stylist);
+      client.Save();
+      //Act
+      client.Update(steve, steve_stylist );
+      //Assert
+      Assert.Equal( steve, client.GetName() );
+      Assert.Equal( steve_stylist, client.GetStylist() );
+    }
     // public void Delete_WillDeleteARow()
     // {
     //   //Arrange

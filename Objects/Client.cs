@@ -103,63 +103,67 @@ namespace HairSalon
         conn.Close();
       }
     }
-  //   public static Stylist Find(int id)
-  //   {
-  //     SqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     string query="SELECT * FROM stylists WHERE id = @id;";
-  //     SqlCommand cmd = new SqlCommand (query, conn);
-  //     SqlParameter idParameter = new SqlParameter("id", id );
-  //     cmd.Parameters.Add(idParameter);
-  //     SqlDataReader rdr = cmd.ExecuteReader();
-   //
-  //     int gotId = 0;
-  //     string gotName = null;
-  //     while( rdr.Read() )
-  //     {
-  //       gotId = rdr.GetInt32(0);
-  //       gotName = rdr.GetString(1);
-  //     }
-  //     Stylist stylist = new Stylist (gotName, gotId);
-   //
-  //     if (rdr != null)
-  //     {
-  //       rdr.Close();
-  //     }
-  //     if (conn != null)
-  //     {
-  //       conn.Close();
-  //     }
-  //     return stylist;
-  //   }
-  //   public void Update(string name)
-  //   {
-  //     SqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     string query = "UPDATE stylists SET description=@name OUTPUT INSERTED.description WHERE id = @id;";
-  //     SqlCommand cmd = new SqlCommand(query,conn);
-  //     cmd.Parameters.AddRange( new []
-  //     {
-  //       new SqlParameter( "@name", name ),
-  //       new SqlParameter( "@id", this.GetId() )
-  //     });
-  //     SqlDataReader rdr = cmd.ExecuteReader();
-  //     while ( rdr.Read() )
-  //     {
-  //       this._name = rdr.GetString(0);
-  //     }
-   //
-  //     if (rdr != null)
-  //     {
-  //       rdr.Close();
-  //     }
-  //     if (conn != null)
-  //     {
-  //       conn.Close();
-  //     }
-  //   }
+    public static Client Find(int id)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string query="SELECT * FROM clients WHERE id = @id;";
+      SqlCommand cmd = new SqlCommand (query, conn);
+      SqlParameter idParameter = new SqlParameter("@id", id );
+      cmd.Parameters.Add(idParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int gotId = 0;
+      string gotName = null;
+      int gotStylist = 0;
+      while( rdr.Read() )
+      {
+        gotId = rdr.GetInt32(0);
+        gotName = rdr.GetString(1);
+        gotStylist = rdr.GetInt32(2);
+      }
+      Client client = new Client (gotName, gotStylist, gotId);
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return client;
+    }
+    public void Update(string name, int stylist)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      string query = "UPDATE clients SET description=@name, stylist=@stylist OUTPUT INSERTED.description, INSERTED.stylist WHERE id = @id;";
+      SqlCommand cmd = new SqlCommand(query,conn);
+      cmd.Parameters.AddRange( new []
+      {
+        new SqlParameter( "@name", name ),
+        new SqlParameter( "@stylist", stylist ),
+        new SqlParameter( "@id", this.GetId() )
+      });
+      SqlDataReader rdr = cmd.ExecuteReader();
+      while ( rdr.Read() )
+      {
+        this._name = rdr.GetString(0);
+        this._stylist = rdr.GetInt32(1);
+      }
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
   //   public void Delete()
   //   {
   //     SqlConnection conn = DB.Connection();
