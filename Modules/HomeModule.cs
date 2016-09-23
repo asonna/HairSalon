@@ -39,9 +39,7 @@ namespace HairSalon
       Patch["/edit/{id}"] = parameters => {
         Stylist updateStylist = Stylist.Find(parameters.id);
         updateStylist.Update(Request.Form["new_stylist_name"]);
-
-        List<Stylist> stylists = Stylist.GetAll();
-        return View["success.cshtml", stylists];
+        return View["success.cshtml"];
       };
       Delete["/edit/{id}"] = parameters =>
       {
@@ -79,6 +77,11 @@ namespace HairSalon
       {
         Client client = Client.Find(parameters.id);
         return View["change_and_delete_client.cshtml", client];
+      };
+      Patch["/clients/edit/{id}"] = parameters => {
+        Client client = Client.Find(parameters.id);
+        client.Update(Request.Form["new_client_name"],Request.Form["stylist_id"]);
+        return View["success.cshtml"];
       };
       Delete["/clients/edit/{id}"] = parameters =>
       {
