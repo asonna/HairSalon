@@ -1,4 +1,6 @@
 using Nancy;
+using System;
+using System.Collections.Generic;
 
 namespace HairSalon
 {
@@ -6,7 +8,13 @@ namespace HairSalon
   {
     public HomeModule()
     {
-      Get["/"] = _ => {
+      Get["/"] = _ =>
+      {
+        List<Stylist> stylists = Stylist.GetAll();
+        return View["index.cshtml", stylists];
+      };
+      Post["/add_stylist"] = _ => {
+
         return View["index.cshtml"];
       };
     }
