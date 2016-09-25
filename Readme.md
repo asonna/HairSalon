@@ -118,10 +118,9 @@ Go
 - There is no error checking for inputs site.
   - Names can exceed VarChar(255);
   - Names can empty VarChar(255);
-- There is limited views.
+- Limited views.
  - You cannot change a clients stylist.  The client must be recreated.
  - You cannot see a list of all clients.
-- Program meets objectives in the alloted time frame, but project scope does mean the program has usable functionality.
 
 ## Support and contact details
 Email me at websites@jonathanbuchner.com
