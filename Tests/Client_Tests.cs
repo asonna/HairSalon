@@ -75,6 +75,7 @@ namespace Tests
       Assert.Equal( steve, client.GetName() );
       Assert.Equal( steve_stylist, client.GetStylist() );
     }
+    [Fact]
     public void Delete_WillDeleteARow()
     {
       //Arrange
@@ -90,6 +91,7 @@ namespace Tests
     public void Dispose()
     {
       Client.DeleteAll();
+      Stylist.DeleteAll();
     }
   }
 }

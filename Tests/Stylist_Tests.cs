@@ -71,6 +71,7 @@ namespace Tests
       //Assert
       Assert.Equal( steve, stylist.GetName() );
     }
+    [Fact]
     public void Delete_WillDeleteARow()
     {
       //Arrange
@@ -83,6 +84,7 @@ namespace Tests
       //Assert
       Assert.Equal(1, Stylist.GetAll().Count );
     }
+    [Fact]
     public void FindClients()
     {
       //Arrange
@@ -90,13 +92,13 @@ namespace Tests
       stylist.Save();
       Stylist stylist2 = new Stylist ("Mrs. Nordy");
       stylist2.Save();
-      Client client = new Client ("Dan", 1);
+      Client client = new Client ("Dan",stylist.GetId() );
       client.Save();
-      Client client1 = new Client ("George", 1);
+      Client client1 = new Client ("George", stylist2.GetId() );
       client1.Save();
-      Client client2 = new Client ("Coolio", 2);
+      Client client2 = new Client ("Coolio", stylist2.GetId() );
       client2.Save();
-      List<Client> created = new List<Client> {client, client1};
+      List<Client> created = new List<Client> {client1, client2};
       //Act
       List<Client> saved = stylist2.FindClients();
       //Assert
@@ -105,6 +107,7 @@ namespace Tests
     public void Dispose()
     {
       Stylist.DeleteAll();
+      Client.DeleteAll();
     }
   }
 }
